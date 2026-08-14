@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const CHASE_SPEED := 52.0   #скорость
-const AGGRO_DIST := 110.0   #расстояние агро
-const CATCH_DIST := 8.0     #гем овер
-const GRAF_REACH := 60.0    #ю вин
+const CHASE_SPEED := 52.0
+const AGGRO_DIST := 110.0
+const CATCH_DIST := 8.0
+const GRAF_REACH := 60.0
 
 var player: CharacterBody2D = null
 var wolf: Node2D = null

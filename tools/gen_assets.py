@@ -259,10 +259,8 @@ def gen_grass():
             for y in range(ts):
                 for x in range(ts):
                     spx[tx * ts + x, ty * ts + y] = BASE
-            # sparse light noise
             for _ in range(rnd.randint(2, 4)):
                 spx[tx * ts + rnd.randrange(ts), ty * ts + rnd.randrange(ts)] = NOISE
-            # grass tufts
             for _ in range(rnd.randint(0, 2)):
                 x = rnd.randrange(2, ts - 3)
                 y = rnd.randrange(3, ts - 3)
@@ -372,54 +370,41 @@ def gen_graf():
                 if 0 <= xx < tw and 0 <= y0 + yy < th:
                     spx[xx, y0 + yy] = col
 
-    # tail curling up behind
     ell(7, 21, 4, 2, B)
     ell(5, 18, 2, 2, BD)
     ell(8, 23, 3, 1, BD)
-    # body with hunched back
     ell(20, 18, 12, 5, B)
     ell(19, 20, 10, 4, BD)
     ell(29, 15, 5, 4, B)
-    # creepy ribs poking through
     for rx in (13, 17, 21, 25):
         for yy in (16, 17):
             if 0 <= rx < tw and 0 <= yy < th:
                 spx[rx, yy] = BK
-    # scratches on the flank
     for sx, sy in ((14, 20), (17, 22), (20, 20)):
         if 0 <= sx < tw and 0 <= sy < th:
             spx[sx, sy] = BK
-    # hind leg
     ell(11, 23, 3, 4, B)
-    # front legs
     ell(24, 23, 3, 4, B)
     ell(30, 23, 3, 4, B)
     for fx in (11, 24, 30):
         ell(fx, 27, 3, 1, BD)
-    # neck / chest
     ell(31, 16, 5, 5, B)
     ell(31, 19, 4, 3, BD)
-    # head
     ell(34, 11, 7, 6, B)
     ell(35, 14, 5, 3, BD)
-    # big open maw
     for yy in (13, 14):
         for xx in range(31, tw):
             spx[xx, yy] = MOUTH
-    # teeth
     for xx in (33, 35, 37, 39):
         spx[xx, 12] = TOOTH
     for xx in (34, 36, 38):
         spx[xx, 15] = TOOTH
-    # pointed ear
     tri(30, 3, 5, B)
     tri(31, 4, 3, BD)
-    # sunken pale eye
     spx[32, 8] = BK
     spx[33, 8] = BK
     spx[32, 7] = EYE
     spx[33, 7] = EYE
-    # blood dripping from the maw
     for col in (33, 36, 38):
         yy = 16
         while yy < 25 and rnd.random() < 0.9:
@@ -471,7 +456,6 @@ def gen_sheep():
             c = cols.get(ch)
             if c:
                 spx[x, y] = c
-    # fluffy wool bumps along the top edge
     for x in range(6, 18):
         if spx[x, 5] == cols["W"] and spx[x, 4][3] == 0 and rnd.random() < 0.5:
             spx[x, 4] = cols["W"]
@@ -504,13 +488,11 @@ def gen_baby_head():
         if 0 <= x < tw and 0 <= y < th:
             spx[x, y] = c
 
-    # round skull
     for y in range(th):
         for x in range(tw):
             if (x - 11) ** 2 + (y - 11) ** 2 <= 121:
                 spx[x, y] = S
 
-    # subtle mottled skin
     for y in range(3, 17):
         for x in range(tw):
             if spx[x, y] == S:
@@ -520,13 +502,11 @@ def gen_baby_head():
                 elif r < 0.065:
                     spx[x, y] = s
 
-    # baby fuzz: a small crown tuft sticking up
     for x, y in ((10, 0), (11, 0), (12, 0), (9, 1), (10, 1), (11, 1), (12, 1), (13, 1), (4, 3), (5, 3), (18, 3), (19, 3)):
         stamp(x, y, H)
     stamp(11, 0, h)
     stamp(11, 1, h)
 
-    # rounded shading: bright crown, darker sides and bottom
     for x in range(7, 17):
         stamp(x, 3, S2)
     for x in range(9, 14):
@@ -543,7 +523,6 @@ def gen_baby_head():
             if spx[x, y] == S:
                 spx[x, y] = s if y < 19 else s2
 
-    # big wide-set baby eyes, low on the face
     for x in range(6, 9):
         for y in range(10, 12):
             stamp(x, y, E)
@@ -552,26 +531,21 @@ def gen_baby_head():
             stamp(x, y, E)
     stamp(7, 10, p)
     stamp(16, 10, p)
-    # dark circles under the eyes
     for x in range(6, 9):
         stamp(x, 12, s2)
     for x in range(15, 18):
         stamp(x, 12, s2)
-    # a tear from the right eye
     stamp(17, 13, B)
     stamp(17, 14, B2)
     stamp(18, 15, B2)
-    # faint temple veins
     stamp(3, 9, V)
     stamp(4, 9, V)
     stamp(20, 9, V)
     stamp(19, 9, V)
 
-    # tiny nose bump
     stamp(11, 12, s2)
     stamp(11, 13, s)
 
-    # small slightly open mouth with a blood drop in the corner
     for x in range(10, 13):
         stamp(x, 14, M)
         stamp(x, 15, M2)
@@ -580,13 +554,11 @@ def gen_baby_head():
     stamp(13, 14, B2)
     stamp(13, 15, B)
 
-    # chubby cheek highlights
     stamp(4, 11, S2)
     stamp(5, 12, S2)
     stamp(19, 11, S2)
     stamp(18, 12, S2)
 
-    # small ragged cut at the bottom (the neck stump)
     for x, y in ((10, 20), (11, 20), (12, 20), (11, 21)):
         stamp(x, y, G2)
     stamp(10, 21, G)
@@ -618,7 +590,6 @@ def gen_friendly_graf():
                 if 0 <= xx < tw and 0 <= y0 + yy < th:
                     spx[xx, y0 + yy] = col
 
-    # same hunched silhouette, same dark colors - just no gore
     ell(7, 21, 4, 2, B)
     ell(5, 18, 2, 2, BD)
     ell(8, 23, 3, 1, BD)
@@ -636,11 +607,9 @@ def gen_friendly_graf():
     ell(35, 14, 5, 3, BD)
     tri(30, 3, 5, B)
     tri(31, 4, 3, BD)
-    # normal bright eye, no sunken socket
     spx[32, 7] = EYE
     spx[33, 7] = EYE
     spx[32, 8] = BK
-    # small calm smile, closed mouth
     spx[34, 14] = MOUTH
     spx[35, 14] = MOUTH
     spx[36, 13] = MOUTH

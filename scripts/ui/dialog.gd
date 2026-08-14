@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-const MARGIN_L := 28.0 #отступ слева
-const MARGIN_R := -28.0 #отступ справа
-const MARGIN_T := -60.0 #отступ сверху (низ окна от нижнего края экрана)
-const MARGIN_B := -16.0 #отступ снизу
-const CHOICE_EXTRA := 50.0 #насколько окно поднимается выше при выборе
+const MARGIN_L := 28.0
+const MARGIN_R := -28.0
+const MARGIN_T := -60.0
+const MARGIN_B := -16.0
+const CHOICE_EXTRA := 50.0
 
 var box: Panel
 var label: Label
