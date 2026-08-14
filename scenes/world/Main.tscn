@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dsj1tanwbx0cb"]
+
+[ext_resource type="TileSet" uid="uid://dmg2rxo23muu0" path="res://assets/resources/grass.tres" id="1_tileset"]
+[ext_resource type="PackedScene" path="res://scenes/player/Roma.tscn" id="2_char"]
+[ext_resource type="Script" uid="uid://ci6wukbg56k8l" path="res://scripts/world/main.gd" id="3_main"]
+
+[node name="Main" type="Node2D" unique_id=2143706010]
+script = ExtResource("3_main")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=550249802]
+tile_set = ExtResource("1_tileset")
+
+[node name="YSort" type="Node2D" parent="." unique_id=642227843]
+y_sort_enabled = true
+
+[node name="Roma" parent="YSort" unique_id=1436941602 instance=ExtResource("2_char")]
+position = Vector2(1608, 1208)

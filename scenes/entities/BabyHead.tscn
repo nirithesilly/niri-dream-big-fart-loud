@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cx7hj6rsett7m"]
+
+[ext_resource type="Texture2D" uid="uid://dfpsn6m4j1nls" path="res://assets/sprites/baby_head.png" id="1_tex"]
+[ext_resource type="Script" uid="uid://q6ad1rm3pacq" path="res://scripts/entities/baby_head.gd" id="2_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 6.0
+
+[node name="BabyHead" type="CharacterBody2D" unique_id=1080655181 groups=["baby_head"]]
+collision_layer = 4
+script = ExtResource("2_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=995109251]
+texture = ExtResource("1_tex")
+centered = false
+offset = Vector2(-12, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=441260247]
+shape = SubResource("CircleShape2D_body")
