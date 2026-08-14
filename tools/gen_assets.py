@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-"""Generates all pixel-art assets for the Yume Nikki style forest demo."""
 import os
 import random
 from PIL import Image
@@ -11,7 +9,6 @@ RESOURCES = os.path.join(ASSETS, "resources")
 os.makedirs(SPRITES, exist_ok=True)
 os.makedirs(RESOURCES, exist_ok=True)
 
-# ---------------------------------------------------------------- palette ---
 HAIR    = (18, 18, 22)
 HAIR_HI = (44, 44, 54)
 SKIN    = (232, 214, 196)
@@ -39,7 +36,6 @@ PAL = {
     "B": SHOE,    "b": SHOE_HI,
 }
 
-# ------------------------------------------------------------ character ----
 def row(*cells):
     assert len(cells) == 16, cells
     return list(cells)
@@ -167,7 +163,7 @@ def build_frame(direction, pose):
         g[y][x] = PONCHO if x == left or x == right else EDGE
     stamp_tail(g, direction)
     stamp_shoes(g, direction, pose)
-    if pose != "idle":  # walking bob: shift whole sprite down one row
+    if pose != "idle":
         out = [[None] * 16 for _ in range(32)]
         for y in range(31):
             out[y + 1] = g[y]
