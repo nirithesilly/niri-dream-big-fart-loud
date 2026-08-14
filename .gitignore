@@ -1,9 +1,7 @@
-# Godot
+
 .godot/
 
-# Сборки
 build/
 
-# Редакторы / ОС
 *.tmp
 .DS_Store
